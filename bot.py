@@ -42,7 +42,7 @@ async def start(message: types.Message):
 @dp.callback_query(lambda c: c.data == "start")
 async def start_btn(callback: types.CallbackQuery):
     await callback.message.answer(
-        "подпишись на канал",
+        "чтобы получить ссылку, нужно быть подписанным на мой основной канал.",
         reply_markup=subscribe_keyboard()
     )
     await callback.answer()
