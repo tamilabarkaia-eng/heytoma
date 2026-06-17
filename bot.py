@@ -15,13 +15,13 @@ dp = Dispatcher()
 
 def start_keyboard():
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="старт 🐛", callback_data="start")]
+        [InlineKeyboardButton(text="получить ссылку", callback_data="start")]
     ])
 
 def subscribe_keyboard():
     return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="подписка есть 🤍", callback_data="check_sub")],
-        [InlineKeyboardButton(text="тг-канал 📢", url=CHANNEL_LINK)]
+        [InlineKeyboardButton(text="подписка есть", callback_data="check_sub")],
+        [InlineKeyboardButton(text="тг-канал", url=CHANNEL_LINK)]
     ])
 
 async def is_subscribed(user_id: int):
@@ -35,14 +35,14 @@ async def is_subscribed(user_id: int):
 async def start(message: types.Message):
     await message.answer(
         "привет🐛 это бот heytoma\n\n"
-        "нажми кнопку ниже, чтобы продолжить",
+        "рада поделиться с тобой ссылкой на чат для мам!",
         reply_markup=start_keyboard()
     )
 
 @dp.callback_query(lambda c: c.data == "start")
 async def start_btn(callback: types.CallbackQuery):
     await callback.message.answer(
-        "подпишись на канал🤍",
+        "подпишись на канал",
         reply_markup=subscribe_keyboard()
     )
     await callback.answer()
